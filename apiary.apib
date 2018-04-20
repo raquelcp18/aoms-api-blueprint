@@ -4,9 +4,80 @@ HOST: https://api.dealshield.com/
 # Assurance Order Management System (AOMS)
 
 AOMS is a system to accept orders for Assurance Protection
-products, such as Repair Guarantee.
+products, such as Repair Guarantee and eventually PSI and DealShield.
 
-## Questions Collection [/orders]
+## Orders Collection [/orders/assurance]
+
+### Create a New Order [POST]
+
+You may create your own order using this action. It takes a JSON
+object containing physical location, order account number (seller
+number), productId, and other vehicle-related information.
+
++ Request (application/json)
+    + Attributes
+        + physicalLocation
+            + name: the name of the auction (required)
+        + orderingAccountNumber: the 5 mill of the person placing the order (number, required)
+        + vehiclePrice: the price of the vehicle (number, required)
+        + currency
+            the currency for the the vehicle price
+            + Default: USD
+        + productId: the product id being ordered (required)
+        + vin: Vehicle Identification Number (required)
+        + year: Vehicle year (required)
+        + make: Vehicle make (required)
+        + trim: Vehicle trim (required)
+        + model: Vehicle model (required)
+        + odometer: the number of miles/kilometers traveled (number, required)
+
+        {
+            "physicalLocation": {
+                "name": "AAAA"
+            },
+            "orderingAccountNumber": 5123456,
+            "currency": "USD",
+            "productId": "repairGuarantee",
+            "vehiclePrice": 24000,
+            "vin": "JF2SJADC3FH504814",
+            "year": 2015,
+            "make": "SUBARU",
+            "trim": "Premium Moonroof",
+            "model": "Forester",
+            "odometer": 12345
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011
+
+    + Body
+
+            {
+                "href": "https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
+                "orderingAccountNumber": 5123456,
+                "currency": "USD",
+                "productId": "repairGuarantee",
+                "vehiclePrice": 24000,
+                "vin": "JF2SJADC3FH504814",
+                "year": 2015,
+                "make": "SUBARU",
+                "trim": "Premium Moonroof",
+                "model": "Forester",
+                "odometer": 12345,
+                "createdAt": "2015-08-05T08:40:51.620Z"
+            }
+
+### Order [/orders/assurance/id/{id}]
+
++ Parameters
+    + id
+
+### Retrieve an Order [GET]
+
+You can 
 
 ### List All Questions [GET]
 
@@ -33,49 +104,3 @@ products, such as Repair Guarantee.
                 ]
             }
         ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
