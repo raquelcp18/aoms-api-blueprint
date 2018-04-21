@@ -17,22 +17,35 @@ number), productId, and other vehicle-related information.
 + Request (application/json)
     + Attributes
         + physicalLocation
-            + name: `AAAA` the name of the auction (required)
+            + name (required)
+                the name of the auction
         + orderingAccountNumber: the 5 million number of the person placing the order (number, required)
         + vehiclePrice: the price of the vehicle (number, required)
         + currency
             the currency for the the vehicle price
-            + Default: 'USD'
+            + Default: USD
         + productId (enum, required)
-            the product id being ordered
+            the product id
             + Members
                 + REPAIR_GUARANTEE
+        + odometerType (enum)
+            the measuring unit for the odometer
+            + Default: miles
+            + Members
+                + miles
+                + kilometer
         + vin: Vehicle Identification Number (required)
         + year: Vehicle year (required)
         + make: Vehicle make (required)
         + trim: Vehicle trim (required)
         + model: Vehicle model (required)
         + odometer: the number of miles/kilometers traveled (number, required)
+        + odometerType (enum)
+            the measuring unit for the odometer
+            + Default: miles
+            + Members
+                + miles
+                + kilometer
         
     + Body
 
@@ -41,7 +54,6 @@ number), productId, and other vehicle-related information.
                     "name": "AAAA"
                 },
                 "orderingAccountNumber": 5123456,
-                "currency": "USD",
                 "productId": "REPAIR_GUARANTEE",
                 "vehiclePrice": 24000,
                 "vin": "JF2SJADC3FH504814",
@@ -63,7 +75,7 @@ number), productId, and other vehicle-related information.
             {
                 "href": "https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
-                "status": "pending",
+                "status": "PENDING",
                 "currency": "USD",
                 "productId": "REPAIR_GUARANTEE",
                 "vehiclePrice": 24000,
@@ -73,6 +85,7 @@ number), productId, and other vehicle-related information.
                 "trim": "Premium Moonroof",
                 "model": "Forester",
                 "odometer": 12345,
+                "odometerType": 'miles',
                 "createdOn": "2015-08-05T08:40:51.620Z"
             }
 
@@ -86,21 +99,50 @@ number), productId, and other vehicle-related information.
 Get the order object by providing an id
 
 + Response 200 (application/json)
-    + Body
+    + Attributes (Order)
     
-            {
-                "href": "https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
-                "orderingAccountNumber": 5123456,
-                "currency": "USD",
-                "productId": "repairGuarantee",
-                "vehiclePrice": 24000,
-                "vin": "JF2SJADC3FH504814",
-                "year": 2015,
-                "make": "SUBARU",
-                "trim": "Premium Moonroof",
-                "model": "Forester",
-                "odometer": 12345,
-                "createdOn": "2015-08-05T08:40:51.620Z"
-            }
 
-## Data Structures
+### Retrieve multiple orders using seller number and vin combination [POST]
+
+Get more than one order by posting a body which contains an array of
+objects
+
++ Request (application/json)
+    + Attributes (array[Order Search Payload])
+    
+    + Body
+        [
+            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456 }
+        ]
+
+# Data Structures
+## Order (object)
++ physicalLocation
+    + name: `AAAA` the name of the auction (required)
++ orderingAccountNumber: the 5 million number of the person placing the order (number, required)
++ vehiclePrice: the price of the vehicle (number, required)
++ currency
+    the currency for the the vehicle price
+    + Default: USD
++ productId (enum, required)
+    the product id
+    + Members
+        + REPAIR_GUARANTEE
++ odometerType (enum)
+    the measuring unit for the odometer
+    + Default: miles
+    + Members
+        + miles
+        + kilometer
++ vin: Vehicle Identification Number (required)
++ year: Vehicle year (required)
++ make: Vehicle make (required)
++ trim: Vehicle trim (required)
++ model: Vehicle model (required)
++ odometer: the number of miles/kilometers traveled (number, required)
++ createdOn: timestamp of when order was created (string) - Timestamp
+
+
+## Order Search Payload (object)
++ vin: Vehicle Identification Number (required)
++ orderingAccountNumber: the 5 million number of the person placing the order (number, required)
