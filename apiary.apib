@@ -77,11 +77,10 @@ number), productId, and other vehicle-related information.
 ### Order [/orders/assurance/id/{id}]
 
 ### Retrieve an Order [GET]
+Get the order object by providing an id
 
 + Parameters
     + id: `rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011` (required)
-
-Get the order object by providing an id
 
 + Response 200 (application/json)
     + Attributes (Order)
@@ -89,8 +88,7 @@ Get the order object by providing an id
 
 ### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance]
 
-Get more than one order by posting a body which contains an array of
-objects
+Get more than one order by posting a body which contains an array of objects
 
 + Request (application/json)
     + Attributes (array[Order Search Payload])
@@ -101,10 +99,13 @@ objects
         ]
 
 # Data Structures
+
 ## Order (object)
 + physicalLocation
     + name: `AAAA` the name of the auction (required)
-+ orderingAccountNumber: the 5 million number of the person placing the order (number, required)
++ orderingAccountNumber (number, required)
+    (Manheim) account number (5 million number) of the ordering entity.
+    This is the account that will be billed for the product
 + product (enum, required)
     the product id
     + Members
@@ -114,10 +115,10 @@ objects
 
 ## Vehicle (object)
 + vin: Vehicle Identification Number (required)
-+ year: Vehicle year (number, required)
-+ make: Vehicle make (required)
-+ trim: Vehicle trim (required)
-+ model: Vehicle model (required)
++ year (number, required)
++ make (required)
++ trim (required)
++ model (required)
 + salePrice: the price of the vehicle (number)
 + mmr: MMR of the vehicle (number)
 + currency
@@ -130,7 +131,32 @@ objects
     + Members
         + miles
         + kilometer
-
++ specialAttributes (array[enum])
+    tags that can apply to a vehicle
+    + Members
+        + exotic
+        + specialty
+        + handBuilt
+        + mediumDutyTruck
+        + heavyDutyTruck
+        + electricVehicle
+        + hybridVehicle
+        + motorcycle
+        + allTerrainVehicle
+        + military
+        + recreationalVehicle
+        + onRoadMotorcycle
+        + snowmobile
+        + scooter
+        + class4orAboveTruck
+        + trailer
+        + camper
+        + golfCart
+        + redLightVehicle
+        + inoperableVehicle
+        + categorizedOther
+        + salvage
+        
 ## Order Search Payload (object)
 + vin: Vehicle Identification Number (required)
 + orderingAccountNumber: the 5 million number of the person placing the order (number, required)
