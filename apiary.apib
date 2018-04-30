@@ -19,33 +19,14 @@ number), productId, and other vehicle-related information.
         + physicalLocation
             + name (required)
                 the name of the auction
-        + orderingAccountNumber: the 5 million number of the person placing the order (number, required)
-        + vehiclePrice: the price of the vehicle (number, required)
-        + currency
-            the currency for the the vehicle price
-            + Default: USD
+        + orderingAccountNumber (number, required)
+            (Manheim) account number (5 million number) of the ordering entity.
+            This is the account that will be billed for the product
         + productId (enum, required)
             the product id
             + Members
                 + REPAIR_GUARANTEE
-        + odometerType (enum)
-            the measuring unit for the odometer
-            + Default: miles
-            + Members
-                + miles
-                + kilometer
-        + vin: Vehicle Identification Number (required)
-        + year: Vehicle year (required)
-        + make: Vehicle make (required)
-        + trim: Vehicle trim (required)
-        + model: Vehicle model (required)
-        + odometer: the number of miles/kilometers traveled (number, required)
-        + odometerType (enum)
-            the measuring unit for the odometer
-            + Default: miles
-            + Members
-                + miles
-                + kilometer
+        + vehicle (Vehicle, required)
         
     + Body
 
@@ -55,13 +36,15 @@ number), productId, and other vehicle-related information.
                 },
                 "orderingAccountNumber": 5123456,
                 "productId": "REPAIR_GUARANTEE",
-                "vehiclePrice": 24000,
-                "vin": "JF2SJADC3FH504814",
-                "year": 2015,
-                "make": "SUBARU",
-                "trim": "Premium Moonroof",
-                "model": "Forester",
-                "odometer": 12345
+                "vehicle": {
+                    "mmr": 24000,
+                    "vin": "JF2SJADC3FH504814",
+                    "year": 2015,
+                    "make": "SUBARU",
+                    "trim": "Premium Moonroof",
+                    "model": "Forester",
+                    "odometer": 12345
+                }
             }
 
 + Response 201 (application/json)
@@ -76,25 +59,27 @@ number), productId, and other vehicle-related information.
                 "href": "https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
                 "status": "PENDING",
-                "currency": "USD",
                 "productId": "REPAIR_GUARANTEE",
-                "vehiclePrice": 24000,
-                "vin": "JF2SJADC3FH504814",
-                "year": 2015,
-                "make": "SUBARU",
-                "trim": "Premium Moonroof",
-                "model": "Forester",
-                "odometer": 12345,
-                "odometerType": 'miles',
+                "vehicle": {
+                    "mmr": 24000,
+                    "currency": "USD",
+                    "vin": "JF2SJADC3FH504814",
+                    "year": 2015,
+                    "make": "SUBARU",
+                    "trim": "Premium Moonroof",
+                    "model": "Forester",
+                    "odometer": 12345,
+                    "odometerType": 'miles'
+                },
                 "createdOn": "2015-08-05T08:40:51.620Z"
             }
 
 ### Order [/orders/assurance/id/{id}]
 
+### Retrieve an Order [GET]
+
 + Parameters
     + id: `rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011` (required)
-
-### Retrieve an Order [GET]
 
 Get the order object by providing an id
 
@@ -102,7 +87,7 @@ Get the order object by providing an id
     + Attributes (Order)
     
 
-### Retrieve multiple orders using seller number and vin combination [POST]
+### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance]
 
 Get more than one order by posting a body which contains an array of
 objects
@@ -120,28 +105,31 @@ objects
 + physicalLocation
     + name: `AAAA` the name of the auction (required)
 + orderingAccountNumber: the 5 million number of the person placing the order (number, required)
-+ vehiclePrice: the price of the vehicle (number, required)
-+ currency
-    the currency for the the vehicle price
-    + Default: USD
-+ productId (enum, required)
++ product (enum, required)
     the product id
     + Members
         + REPAIR_GUARANTEE
++ vehicle: vehicle information (Vehicle, required)
++ createdOn: timestamp of when order was created (string) - Timestamp
+
+## Vehicle (object)
++ vin: Vehicle Identification Number (required)
++ year: Vehicle year (number, required)
++ make: Vehicle make (required)
++ trim: Vehicle trim (required)
++ model: Vehicle model (required)
++ salePrice: the price of the vehicle (number)
++ mmr: MMR of the vehicle (number)
++ currency
+    the currency for the the vehicle price
+    + Default: USD
++ odometer: the number of miles/kilometers traveled (number, required)
 + odometerType (enum)
     the measuring unit for the odometer
     + Default: miles
     + Members
         + miles
         + kilometer
-+ vin: Vehicle Identification Number (required)
-+ year: Vehicle year (required)
-+ make: Vehicle make (required)
-+ trim: Vehicle trim (required)
-+ model: Vehicle model (required)
-+ odometer: the number of miles/kilometers traveled (number, required)
-+ createdOn: timestamp of when order was created (string) - Timestamp
-
 
 ## Order Search Payload (object)
 + vin: Vehicle Identification Number (required)
