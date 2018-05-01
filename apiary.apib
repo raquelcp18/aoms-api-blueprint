@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.dealshield.com/
+HOST: https://api.aoms-np.dealshield.com/staging/
 
 # Assurance Order Management System (AOMS)
 
@@ -51,12 +51,12 @@ number), productId, and other vehicle-related information.
 
     + Headers
 
-            Location: https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011
+            Location: https://api.aoms-np.dealshield.com/staging/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011
 
     + Body
 
             {
-                "href": "https://api.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
+                "href": "https://api.aoms-np.dealshield.com/staging/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
                 "status": "PENDING",
                 "productId": "REPAIR_GUARANTEE",
@@ -69,9 +69,18 @@ number), productId, and other vehicle-related information.
                     "trim": "Premium Moonroof",
                     "model": "Forester",
                     "odometer": 12345,
-                    "odometerType": 'miles'
+                    "odometerType": "miles"
                 },
-                "createdOn": "2015-08-05T08:40:51.620Z"
+                "sellerAccountNumber": 5000001,
+                "buyerAccountNumber": 5123456,
+                "inspectionResults": {
+                    "href": "https://api.manheim.com/XXXXX"
+                },
+                "unit": {
+                    "href": "https://api.manheim.com/XXXXX"
+                },
+                "createdOn": "2015-08-05T08:40:51.620Z",
+                "updatedOn": "2015-08-05T09:40:51.620Z"
             }
 
 ### Order [/orders/assurance/id/{id}]
@@ -106,12 +115,22 @@ Get more than one order by posting a body which contains an array of objects
 + orderingAccountNumber (number, required)
     (Manheim) account number (5 million number) of the ordering entity.
     This is the account that will be billed for the product
++ sellerAccountNumber: Manheim account number of the seller
++ buyerAccountNumber: Manheim account number of the buyer
 + product (enum, required)
     the product id
     + Members
         + REPAIR_GUARANTEE
++ status (enum)
+    the order state
+    + Members
+        + PENDING
+        + CANCELLED
+        + FULFILLED
++ reasonForCancellation: the reason order state is cancelled
 + vehicle: vehicle information (Vehicle, required)
 + createdOn: timestamp of when order was created (string) - Timestamp
++ updatedOn: timestamp of when order was updated (string) - Timestamp
 
 ## Vehicle (object)
 + vin: Vehicle Identification Number (required)
