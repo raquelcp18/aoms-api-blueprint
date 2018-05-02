@@ -94,6 +94,38 @@ Get the order object by providing an id
 + Response 200 (application/json)
     + Attributes (Order)
     
+### Create more than one order  [POST /orders/assurance/bulk]
+
++ Request (application/json)
+    + Attributes (array[Order Create Payload])
+    
+    + Body
+    ```
+        [
+            {
+                "physicalLocation": {
+                    "name": "AAAA"
+                },
+                "orderingAccountNumber": 5123456,
+                "productId": "REPAIR_GUARANTEE",
+                "vehicle": {
+                    "mmr": 24000,
+                    "vin": "JF2SJADC3FH504814",
+                    "year": 2015,
+                    "make": "SUBARU",
+                    "trim": "Premium Moonroof",
+                    "model": "Forester",
+                    "odometer": 12345
+                }
+            }
+        ]
+    ```
+        
++ Response 200 (application/json)
+    + Attributes
+        + href
+        + count (number): number of items
+        + items (array[Order])
 
 ### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance]
 
@@ -103,9 +135,19 @@ Get more than one order by posting a body which contains an array of objects
     + Attributes (array[Order Search Payload])
     
     + Body
+    ```
         [
             { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456 }
         ]
+    ```
+        
++ Response 200 (application/json)
+    + Attributes
+        + href
+        + count `1` (number)
+            number of items
+        + items (array[Order])
+        
 
 # Data Structures
 
@@ -117,7 +159,7 @@ Get more than one order by posting a body which contains an array of objects
     This is the account that will be billed for the product
 + sellerAccountNumber: Manheim account number of the seller
 + buyerAccountNumber: Manheim account number of the buyer
-+ product (enum, required)
++ productId (enum, required)
     the product id
     + Members
         + REPAIR_GUARANTEE
@@ -128,7 +170,8 @@ Get more than one order by posting a body which contains an array of objects
         + CANCELLED
         + FULFILLED
 + reasonForCancellation: the reason order state is cancelled
-+ vehicle: vehicle information (Vehicle, required)
++ vehicle (Vehicle, required)
+    vehicle information
 + createdOn: timestamp of when order was created (string) - Timestamp
 + updatedOn: timestamp of when order was updated (string) - Timestamp
 
@@ -138,12 +181,14 @@ Get more than one order by posting a body which contains an array of objects
 + make (required)
 + trim (required)
 + model (required)
-+ salePrice: the price of the vehicle (number)
-+ mmr: MMR of the vehicle (number)
++ salePrice (number)
+    the price of the vehicle
++ mmr (number): MMR of the vehicle
 + currency
     the currency for the the vehicle price
     + Default: USD
-+ odometer: the number of miles/kilometers traveled (number, required)
++ odometer (number, required)
+    the number of miles/kilometers traveled
 + odometerType (enum)
     the measuring unit for the odometer
     + Default: miles
@@ -153,29 +198,41 @@ Get more than one order by posting a body which contains an array of objects
 + specialAttributes (array[enum])
     tags that can apply to a vehicle
     + Members
-        + exotic
-        + specialty
-        + handBuilt
-        + mediumDutyTruck
-        + heavyDutyTruck
-        + electricVehicle
-        + hybridVehicle
-        + motorcycle
         + allTerrainVehicle
-        + military
-        + recreationalVehicle
-        + onRoadMotorcycle
-        + snowmobile
-        + scooter
-        + class4orAboveTruck
-        + trailer
         + camper
-        + golfCart
-        + redLightVehicle
-        + inoperableVehicle
         + categorizedOther
+        + class4orAboveTruck
+        + electricVehicle
+        + exotic
+        + golfCart
+        + handBuilt
+        + heavyDutyTruck
+        + hybridVehicle
+        + inoperableVehicle
+        + mediumDutyTruck
+        + military
+        + motorcycle
+        + onRoadMotorcycle
+        + recreationalVehicle
+        + redLightVehicle
         + salvage
+        + scooter
+        + snowmobile
+        + specialty
+        + trailer
         
+## Order Create Payload (object)
++ physicalLocation
+    + name: `AAAA` the name of the auction (required)
++ orderingAccountNumber (number, required)
+    (Manheim) account number (5 million number) of the ordering entity.
+    This is the account that will be billed for the product
++ productId (enum, required)
+    the product id
+    + Members
+        + REPAIR_GUARANTEE
++ vehicle (Vehicle)
+
 ## Order Search Payload (object)
-+ vin: Vehicle Identification Number (required)
-+ orderingAccountNumber: the 5 million number of the person placing the order (number, required)
++ vin (required): Vehicle Identification Number
++ orderingAccountNumber (number, required): the 5 million number of the person placing the order
