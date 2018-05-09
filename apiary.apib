@@ -127,7 +127,7 @@ Get the order object by providing an id
         + count (number): number of items
         + items (array[Order])
 
-### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance]
+### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance/search]
 
 Get more than one order by posting a body which contains an array of objects
 
@@ -137,7 +137,7 @@ Get more than one order by posting a body which contains an array of objects
     + Body
     ```
         [
-            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456 }
+            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456, productId: 'REPAIR_GUARANTEE' }
         ]
     ```
         
@@ -236,3 +236,7 @@ Get more than one order by posting a body which contains an array of objects
 ## Order Search Payload (object)
 + vin (required): Vehicle Identification Number
 + orderingAccountNumber (number, required): the 5 million number of the person placing the order
++ productId (enum, required)
+    the product id
+    + Members
+        + REPAIR_GUARANTEE
