@@ -15,18 +15,7 @@ object containing physical location name, order account number (seller
 number), productId, and other vehicle-related information.
 
 + Request (application/json)
-    + Attributes
-        + physicalLocation
-            + name (required)
-                the name of the auction
-        + orderingAccountNumber (number, required)
-            (Manheim) account number (5 million number) of the ordering entity.
-            This is the account that will be billed for the product
-        + productId (enum, required)
-            the product id
-            + Members
-                + REPAIR_GUARANTEE
-        + vehicle (Vehicle, required)
+    + Attributes (Order Create Payload)
         
     + Body
 
@@ -104,7 +93,8 @@ Get the order object by providing an id
         [
             {
                 "physicalLocation": {
-                    "name": "AAAA"
+                    "name": "AAAA",
+                    "type": "AT_AUCTION"
                 },
                 "orderingAccountNumber": 5123456,
                 "productId": "REPAIR_GUARANTEE",
@@ -153,7 +143,20 @@ Get more than one order by posting a body which contains an array of objects
 
 ## Order (object)
 + physicalLocation
-    + name: `AAAA` the name of the auction (required)
+    + name `AAAA`
+        the name of the location
+    + type (enum, required)
+        type of location
+        + Members
+            + AT_AUCTION
+            + AT_DEALERSHIP
+    + operationLocation
+        + href `https://api.manheim.com/locations/id/AAAA`
+            URL of details about the physical location
+    + address `6325 Peachtree Dunwoody Road`
+    + city `Atlanta`
+    + state `GA`
+    + zip `30319`
 + orderingAccountNumber (number, required)
     (Manheim) account number (5 million number) of the ordering entity.
     This is the account that will be billed for the product
@@ -223,7 +226,20 @@ Get more than one order by posting a body which contains an array of objects
         
 ## Order Create Payload (object)
 + physicalLocation
-    + name: `AAAA` the name of the auction (required)
+    + name `AAAA`
+        the name of the location
+    + type (enum, required)
+        type of location
+        + Members
+            + AT_AUCTION
+            + AT_DEALERSHIP
+    + operationLocation
+        + href `https://api.manheim.com/locations/id/AAAA`
+            URL of details about the physical location
+    + address `6325 Peachtree Dunwoody Road`
+    + city `Atlanta`
+    + state `GA`
+    + zip `30319`
 + orderingAccountNumber (number, required)
     (Manheim) account number (5 million number) of the ordering entity.
     This is the account that will be billed for the product
