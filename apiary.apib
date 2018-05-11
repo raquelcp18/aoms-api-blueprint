@@ -24,7 +24,7 @@ number), productId, and other vehicle-related information.
                     "name": "AAAA"
                 },
                 "orderingAccountNumber": 5123456,
-                "productId": "REPAIR_GUARANTEE",
+                "productId": "repairGuarantee",
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
@@ -48,7 +48,7 @@ number), productId, and other vehicle-related information.
                 "href": "https://api.aoms-np.dealshield.com/staging/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
                 "status": "PENDING",
-                "productId": "REPAIR_GUARANTEE",
+                "productId": "repairGuarantee",
                 "vehicle": {
                     "mmr": 24000,
                     "currency": "USD",
@@ -97,7 +97,7 @@ Get the order object by providing an id
                     "type": "AT_AUCTION"
                 },
                 "orderingAccountNumber": 5123456,
-                "productId": "REPAIR_GUARANTEE",
+                "productId": "repairGuarantee",
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
@@ -127,7 +127,7 @@ Get more than one order by posting a body which contains an array of objects
     + Body
     ```
         [
-            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456, productId: 'REPAIR_GUARANTEE' }
+            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456, productId: 'repairGuarantee' }
         ]
     ```
         
@@ -165,7 +165,7 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + REPAIR_GUARANTEE
+        + repairGuarantee
 + status (enum)
     the order state
     + Members
@@ -246,7 +246,7 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + REPAIR_GUARANTEE
+        + repairGuarantee
 + vehicle (Vehicle)
 
 ## Order Search Payload (object)
@@ -255,4 +255,4 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + REPAIR_GUARANTEE
+        + repairGuarantee
