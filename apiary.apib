@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.aoms-np.dealshield.com/staging/
+HOST: https://api-staging.aoms-np.dealshield.com/
 
 # Assurance Order Management System (AOMS)
 
@@ -21,7 +21,7 @@ number), productId, and other vehicle-related information.
 
             {
                 "physicalLocation": {
-                    "name": "AAAA"
+                    "name": "MISS"
                 },
                 "orderingAccountNumber": 5123456,
                 "productId": "repairGuarantee",
@@ -40,12 +40,12 @@ number), productId, and other vehicle-related information.
 
     + Headers
 
-            Location: https://api.aoms-np.dealshield.com/staging/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011
+            Location: https://api-staging.aoms-np.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011
 
     + Body
 
             {
-                "href": "https://api.aoms-np.dealshield.com/staging/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
+                "href": "https://api-staging.aoms-np.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
                 "status": "PENDING",
                 "productId": "repairGuarantee",
@@ -60,16 +60,18 @@ number), productId, and other vehicle-related information.
                     "odometer": 12345,
                     "odometerUnit": "miles"
                 },
-                "sellerAccountNumber": 5000001,
-                "buyerAccountNumber": 5123456,
-                "inspectionResults": {
-                    "href": "https://api.manheim.com/XXXXX"
+                "physicalLocation": {
+                    "name": "MISS",
+                    "operationLocation": {
+                        "href": "https://integration1.api.manheim.com/locations/id/MISS"
+                    },
+                    "type": "AT_AUCTION"
                 },
+                "sellerAccountNumber": 5123456,
                 "unit": {
                     "href": "https://api.manheim.com/XXXXX"
                 },
-                "createdOn": "2015-08-05T08:40:51.620Z",
-                "updatedOn": "2015-08-05T09:40:51.620Z"
+                "createdOn": "2015-08-05T08:40:51.620Z"
             }
 
 ### Order [/orders/assurance/id/{id}]
