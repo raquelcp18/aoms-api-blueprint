@@ -67,7 +67,7 @@ number), productId, and other vehicle-related information.
                     },
                     "type": "AT_AUCTION"
                 },
-                "sellerAccountNumber": 5123456,
+                "sellerAccount": 5123456,
                 "unit": {
                     "href": "https://api.manheim.com/XXXXX"
                 },
@@ -163,8 +163,8 @@ Get more than one order by posting a body which contains an array of objects
 + orderingAccountNumber (number, required)
     (Manheim) account number (5 million number) of the ordering entity.
     This is the account that will be billed for the product
-+ sellerAccountNumber: Manheim account number of the seller
-+ buyerAccountNumber: Manheim account number of the buyer
++ sellerAccount: Manheim account number of the seller
++ buyerAccount: Manheim account number of the buyer
 + productId (enum, required)
     the product id
     + Members
