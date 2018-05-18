@@ -119,7 +119,7 @@ Get the order object by providing an id
         + count (number): number of items
         + items (array[Order])
 
-### Retrieve multiple orders using seller number and vin combination [POST /orders/assurance/search]
+### Retrieve multiple orders using vin, order account number and productId combination [POST /orders/assurance/search]
 
 Get more than one order by posting a body which contains an array of objects
 
@@ -137,7 +137,6 @@ Get more than one order by posting a body which contains an array of objects
         
 + Response 200 (application/json)
     + Attributes
-        + href
         + count `1` (number)
             number of items
         + items (array[Order])
