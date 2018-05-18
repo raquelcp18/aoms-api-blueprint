@@ -129,7 +129,9 @@ Get more than one order by posting a body which contains an array of objects
     + Body
     ```
         [
-            { vin: 'JF2SJADC3FH504814', orderingAccountNumber: 5123456, productId: 'repairGuarantee' }
+            {"vin": "JF2SJADC3FH504812","orderingAccountNumber": 5123456, "productId": "repairGuarantee" },
+            {"vin": "JF2SJADC3FH504814","orderingAccountNumber": 5123456, "productId": "repairGuarantee" },
+            {"vin": "JF2SJADC3FH504813","orderingAccountNumber": 5123456, "productId": "repairGuarantee" }
         ]
     ```
         
@@ -154,7 +156,7 @@ Get more than one order by posting a body which contains an array of objects
             + AT_AUCTION
             + AT_DEALERSHIP
     + operationLocation
-        + href `https://api.manheim.com/locations/id/AAAA`
+        + href `https://integration1.api.manheim.com/locations/id/MISS`
             URL of details about the physical location
     + address `6325 Peachtree Dunwoody Road`
     + city `Atlanta`
@@ -163,8 +165,8 @@ Get more than one order by posting a body which contains an array of objects
 + orderingAccountNumber (number, required)
     (Manheim) account number (5 million number) of the ordering entity.
     This is the account that will be billed for the product
-+ sellerAccountNumber: Manheim account number of the seller
-+ buyerAccountNumber: Manheim account number of the buyer
++ sellerAccountNumber (number): Manheim account number of the seller
++ buyerAccountNumber (number): Manheim account number of the buyer
 + productId (enum, required)
     the product id
     + Members
@@ -178,6 +180,9 @@ Get more than one order by posting a body which contains an array of objects
 + reasonForCancellation: the reason order state is cancelled
 + vehicle (Vehicle, required)
     vehicle information
++ unit
+    + href `https://integration1.api.manheim.com/units/id/8d791464-597e-11e8-bec7-270b901fc001`
++ href `https://api-staging.aoms-np.dealshield.com/orders/assurance/id/rg_2646e70d-f4ea-433c-b475-917676446bb1`
 + createdOn: timestamp of when order was created (string) - Timestamp
 + updatedOn: timestamp of when order was updated (string) - Timestamp
 
