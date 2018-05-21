@@ -24,7 +24,7 @@ number), productId, and other vehicle-related information.
                     "name": "MISS"
                 },
                 "orderingAccountNumber": 5123456,
-                "productId": "repairGuarantee",
+                "productId": "REPAIR_GUARANTEE",
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
@@ -48,7 +48,7 @@ number), productId, and other vehicle-related information.
                 "href": "https://api-staging.aoms-np.dealshield.com/orders/assurance/id/rg_fe880faf-7d44-4b7d-8245-2f12bdbb4011",
                 "orderingAccountNumber": 5123456,
                 "status": "PENDING",
-                "productId": "repairGuarantee",
+                "productId": "REPAIR_GUARANTEE",
                 "vehicle": {
                     "mmr": 24000,
                     "currency": "USD",
@@ -99,7 +99,7 @@ Get the order object by providing an id
                     "type": "AT_AUCTION"
                 },
                 "orderingAccountNumber": 5123456,
-                "productId": "repairGuarantee",
+                "productId": "REPAIR_GUARANTEE",
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
@@ -129,9 +129,9 @@ Get more than one order by posting a body which contains an array of objects
     + Body
     ```
         [
-            {"vin": "JF2SJADC3FH504812","orderingAccountNumber": 5123456, "productId": "repairGuarantee" },
-            {"vin": "JF2SJADC3FH504814","orderingAccountNumber": 5123456, "productId": "repairGuarantee" },
-            {"vin": "JF2SJADC3FH504813","orderingAccountNumber": 5123456, "productId": "repairGuarantee" }
+            {"vin": "JF2SJADC3FH504812","orderingAccountNumber": 5123456, "productId": "REPAIR_GUARANTEE" },
+            {"vin": "JF2SJADC3FH504814","orderingAccountNumber": 5123456, "productId": "REPAIR_GUARANTEE" },
+            {"vin": "JF2SJADC3FH504813","orderingAccountNumber": 5123456, "productId": "REPAIR_GUARANTEE" }
         ]
     ```
         
@@ -169,7 +169,7 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + repairGuarantee
+        + REPAIR_GUARANTEE
 + status (enum)
     the order state
     + Members
@@ -235,7 +235,7 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + repairGuarantee
+        + REPAIR_GUARANTEE
 + vehicle (Vehicle)
 
 ## Order Search Payload (object)
@@ -244,4 +244,4 @@ Get more than one order by posting a body which contains an array of objects
 + productId (enum, required)
     the product id
     + Members
-        + repairGuarantee
+        + REPAIR_GUARANTEE
