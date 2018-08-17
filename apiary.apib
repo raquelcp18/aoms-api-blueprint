@@ -6,7 +6,7 @@ HOST: https://api-staging.aoms-np.dealshield.com/
 AOMS is a system to accept orders for Assurance Protection
 products, such as Repair Guarantee and eventually PSI and DealShield.
 
-## Orders [/orders/assurance]
+## Orders [/orders/assurance/]
 
 ### Create a New Order [POST]
 
@@ -25,6 +25,9 @@ number), productId, and other vehicle-related information.
                 },
                 "orderingAccountNumber": 5123456,
                 "productId": "REPAIR_GUARANTEE",
+                "additionalOrderInfo": {
+                    "workOrderNumber": 1234567
+                ,
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
@@ -100,6 +103,9 @@ Get the order object by providing an id
                 },
                 "orderingAccountNumber": 5123456,
                 "productId": "REPAIR_GUARANTEE",
+                "additionalOrderInfo": {
+                    "workOrderNumber": 1234567
+                ,
                 "vehicle": {
                     "mmr": 24000,
                     "vin": "JF2SJADC3FH504814",
