@@ -98,7 +98,7 @@ Get the order object by providing an id
         [
             {
                 "physicalLocation": {
-                    "name": "AAAA",
+                    "name": "plMISS",
                     "type": "AT_AUCTION"
                 },
                 "orderingAccountNumber": 5123456,
@@ -152,7 +152,7 @@ Get more than one order by posting a body which contains an array of objects
 
 ## Order (object)
 + physicalLocation
-    + name `AAAA`
+    + name `MISS`
         the name of the location
     + type (enum, required)
         type of location
@@ -221,7 +221,7 @@ Get more than one order by posting a body which contains an array of objects
         
 ## Order Create Payload (object)
 + physicalLocation
-    + name `AAAA`
+    + name `MISS`
         the name of the location
     + type (enum, required)
         type of location
@@ -229,7 +229,7 @@ Get more than one order by posting a body which contains an array of objects
             + AT_AUCTION
             + AT_DEALERSHIP
     + operationLocation
-        + href `https://api.manheim.com/locations/id/AAAA`
+        + href `https://api.manheim.com/locations/id/MISS`
             URL of details about the physical location
     + address `6325 Peachtree Dunwoody Road`
     + city `Atlanta`
