@@ -136,13 +136,41 @@ Compute arbitration eligibility
 Compute arbitration eligibility for multiple transtactions
 
 
-+ Request (application/json)
++ Request Existing Transaction in Purchases API (application/json)
 
     + Attributes (array[purchase])
 
 
 + Response 200 (application/json)
     + Attributes (array[Compute arbitration eligibilityResponse])
+
+
+    + Body
+
+            [
+                {
+                    "eligible": false,
+                    "ineligibleReason": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
+                }
+            ]
+
++ Request Missing Transaction in Purchases API (application/json)
+
+    + Attributes (array[purchase])
+
+
++ Response 200 (application/json)
+    + Attributes (array[Compute arbitration eligibilityResponse])
+
+
+    + Body
+
+            [
+                {
+
+                    "message": "no purchase found matching given fields"
+                }
+            ]
 
 ## Orders [/orders/assurance/]
 
