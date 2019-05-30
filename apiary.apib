@@ -20,13 +20,21 @@ The parameters that are needed to be sent for this type of authentication are as
 ## Compute arbitration eligibility [POST]
 Compute arbitration eligibility
 
-### Example response _message_
+### Example \Iineligibility response _message_
 
 | message |
 |---|
 | This vehicle does not meet the sale light eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee. |
 | This vehicle does not meet the model year eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee |
 | This vehicle does not meet the time-based eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee |
+
+### Example Bad request 400 _message_
+
+| message |
+|---|
+| This business is not supported yet. |
+| This channel is not supported yet. |
+
 
 + Request (application/json)
 
@@ -51,6 +59,21 @@ Compute arbitration eligibility
                 }
             }
 
++ Response 400 (application/json)
+
+        request error
+
+    + Attributes (Compute arbitration eligibilityException)
+
+
+    + Body
+
+            {
+
+                "message": "This business is not supported yet"
+            }
+
+
 
 + Response 404 (application/json)
 
@@ -62,11 +85,8 @@ Compute arbitration eligibility
     + Body
 
             {
-                "errors": [
-                    {
-                        "message": "no purchase found matching given fields"
-                    }
-                ]
+
+                "message": "no purchase found matching given fields"
             }
 
 # Data Structures
@@ -102,7 +122,6 @@ Compute arbitration eligibility
 
 
 ### Properties
-+ `code` (string, required)
 + `message` (string, required)
 
 
@@ -110,14 +129,13 @@ Compute arbitration eligibility
 
 
 ### Properties
-+ `errors` (array[Error], required)
++ `message` (string, required)
 
 
 ## Error (object)
 
 
 ### Properties
-+ `code` (string, required)
 + `message` (string, required)
 
 
