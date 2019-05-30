@@ -20,7 +20,7 @@ The parameters that are needed to be sent for this type of authentication are as
 ## Compute arbitration eligibility [POST]
 Compute arbitration eligibility
 
-### Example \Iineligibility response _message_
+### Example Ineligibility response _message_
 
 | message |
 |---|
@@ -52,11 +52,8 @@ Compute arbitration eligibility
     + Body
 
             {
-                "success": true,
                 "eligible": false,
-                "ineligibleReason": {
-                    "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
-                }
+                "ineligibleReason": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
             }
 
 + Response 400 (application/json)
@@ -115,14 +112,7 @@ Compute arbitration eligibility
 
 ### Properties
 + `eligible` (boolean, required)
-+ `ineligibleReason` (IneligibleReason, optional)
-
-
-## IneligibleReason (object)
-
-
-### Properties
-+ `message` (string, required)
++ `ineligibleReason` (string, optional)
 
 
 ## Compute arbitration eligibilityException (object)
@@ -139,7 +129,20 @@ Compute arbitration eligibility
 + `message` (string, required)
 
 
+# Bulk request for Issues Arbitration Eligibilty [/issues/arbitration/eligibilty/bulk]
 
+## Bulk Compute arbitration eligibility [POST]
+
+Compute arbitration eligibility for multiple transtactions
+
+
++ Request (application/json)
+
+    + Attributes (array[purchase])
+
+
++ Response 200 (application/json)
+    + Attributes (array[Compute arbitration eligibilityResponse])
 
 ## Orders [/orders/assurance/]
 
