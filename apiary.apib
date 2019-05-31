@@ -7,7 +7,8 @@ AOMS is a system to accept orders for Assurance Protection
 products, such as Repair Guarantee and eventually PSI and DealShield.
 
 ## Arbitration Eligibility
-compute eligibility to open an arbitration case against a purchase
+
+Compute eligibility to open an arbitration case against a purchase
 
 ### Authentication
 This API uses Custom Header for its authentication.
@@ -20,7 +21,7 @@ The parameters that are needed to be sent for this type of authentication are as
 ## Compute arbitration eligibility [POST]
 Compute arbitration eligibility
 
-### Example Ineligibility response _message_
+### Example ineligible response _message_
 
 | message |
 |---|
@@ -53,20 +54,20 @@ Compute arbitration eligibility
 
             {
                 "eligible": false,
-                "ineligibleReason": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
+                "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
             }
 
 + Response 400 (application/json)
 
         request error
 
-    + Attributes (Compute arbitration eligibilityException)
+    + Attributes (Compute arbitration eligibilityResponse)
 
 
     + Body
 
             {
-
+                "eligible": false,
                 "message": "This business is not supported yet"
             }
 
@@ -76,13 +77,13 @@ Compute arbitration eligibility
 
         client error
 
-    + Attributes (Compute arbitration eligibilityException)
+    + Attributes (Compute arbitration eligibilityResponse)
 
 
     + Body
 
             {
-
+                "eligible": false,
                 "message": "no purchase found matching given fields"
             }
 
@@ -112,14 +113,7 @@ Compute arbitration eligibility
 
 ### Properties
 + `eligible` (boolean, required)
-+ `ineligibleReason` (string, optional)
-
-
-## Compute arbitration eligibilityException (object)
-
-
-### Properties
-+ `message` (string, required)
++ `message` (string, optional)
 
 
 ## Error (object)
@@ -150,7 +144,7 @@ Compute arbitration eligibility for multiple transtactions
             [
                 {
                     "eligible": false,
-                    "ineligibleReason": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
+                    "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
                 }
             ]
 
@@ -167,7 +161,7 @@ Compute arbitration eligibility for multiple transtactions
 
             [
                 {
-
+                    "eligible": false,
                     "message": "no purchase found matching given fields"
                 }
             ]
