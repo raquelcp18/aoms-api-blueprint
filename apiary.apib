@@ -26,9 +26,9 @@ Compute arbitration eligibility
 
 | message |
 |---|
-| This vehicle does not meet the sale light eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee. |
-| This vehicle does not meet the model year eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee |
-| This vehicle does not meet the time-based eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee |
+| This vehicle does not meet the sale light eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that an invalid arbitration will be subject to a $200 invalid arbitration fee. |
+| This vehicle does not meet the model year eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that an  invalid arbitration will be subject to a $200 invalid arbitration fee |
+| This vehicle does not meet the time-based eligibility criteria for Arbitration. Are you sure you want to proceed? Please know that an  invalid arbitration will be subject to a $200 invalid arbitration fee |
 
 ### Example Bad request 400 _message_
 
@@ -55,7 +55,7 @@ Compute arbitration eligibility
 
             {
                 "eligible": false,
-                "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
+                "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that an invalid arbitration will be subject to a $200 invalid arbitration fee."
             }
 
 + Response 400 (application/json)
@@ -145,7 +145,7 @@ Compute arbitration eligibility for multiple transtactions
             [
                 {
                     "eligible": false,
-                    "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that invalid arbitration will be subject to a $200 invalid arbitration fee."
+                    "message": "This vehicle does not meet the [*generic message(needs a table)*] for Arbitration. Are you sure you want to proceed? Please know that an invalid arbitration will be subject to a $200 invalid arbitration fee."
                 }
             ]
 
