@@ -88,10 +88,10 @@ Compute arbitration eligibility
                 "message": "no purchase found matching given fields"
             }
 
+
 # Data Structures
 
 ## purchase (object)
-
 
 ### Properties
 
@@ -119,9 +119,201 @@ Compute arbitration eligibility
 
 ## Error (object)
 
-
 ### Properties
 + `message` (string, required)
+
+
+# Group Customers
+
+## Customers [/dealers]
+
+### Customer Subscription [/dealers/{dealerNumber}/subscriptions]
+
+### Create or Update a Customer Subscription [POST]
+
++ Parameters
+    + dealerNumber: `5000202` (required) - Dealer Number.
++ Request (application/json)
+    + Attributes (Subscription Create Payload)
+
++ Response 201 (application/json)
+
+        Customer created
+
+    + Body
+
+            {
+                "dealerNumber": "500202",
+                "approverName": "Mia Toretto",
+                "dealerName": "Brian OConner",
+                "contactName": "Dominic Toretto",
+                "contactEmail": "dominic@toretto",
+                "contactPhoneNumber": "123456",
+                "products": {
+                    "sevenDayVarPSI": {
+                    "active": true,
+                    "cascade": true,
+                    "locations": [
+                        "PSM1"
+                    ],
+                    "startDate": "2019-01-01",
+                    "endDate": "2019-01-20",
+                    "price": 1000,
+                    "coverageConditions": {
+                        "channel": [
+                        "In-Lane"
+                        ],
+                        "mileage": 13000
+                    },
+                    "LPI": {
+                        "mileage": 126000,
+                        "price": 300
+                    }
+                    }
+                },
+                "status": "active",
+                "createdAt": "2019-10-08T18:43:19.647Z"
+            }
+
+
++ Response 200 (application/json)
+
+        Customer updated
+
+    + Body
+
+            {
+                "dealerNumber": "500202",
+                "approverName": "Mia Toretto",
+                "dealerName": "Brian OConner",
+                "contactName": "Dominic Toretto",
+                "contactEmail": "dominic@toretto.dev",
+                "contactPhoneNumber": "123456",
+                "products": {
+                    "sevenDayVarPSI": {
+                    "active": true,
+                    "cascade": true,
+                    "locations": [
+                        "PSM1"
+                    ],
+                    "startDate": "2019-01-01",
+                    "endDate": "2019-01-20",
+                    "price": 1000,
+                    "coverageConditions": {
+                        "channel": [
+                        "In-Lane"
+                        ],
+                        "mileage": 13000
+                    },
+                    "LPI": {
+                        "mileage": 126000,
+                        "price": 300
+                    }
+                    }
+                },
+                "status": "active",
+                "createdAt": "2019-10-08T18:43:19.647Z"
+            }
+
++ Response 400 (application/json)
+
+        Create or Update error
+
+    + Body
+
+            {
+                "message": "Error message"
+            }
+
+
+### Retrieve a Customer Subscription [GET]
+
++ Parameters
+    + dealerNumber: `5000100` (required)
+
++ Response 200 (application/json)
+    + Attributes (Subscription)
+
++ Response 404 (application/json)
+
+
+### Cancel a Customer Subscription  [POST  /dealers/subscriptions/cancel]
+
++ Request
+
+        {
+            "dealerNumber": "123456",
+            "endDate": "2019-09-26"
+        }
+
++ Response 200 (application/json)
+
+        Successful Cancellation
+
+    + Body
+
+            {
+                "message": "PSI subscription has been cancelled"
+            }
+
++ Response 400 (application/json)
+
+        Cancel error
+
+    + Body
+
+            {
+                "message": "Error message"
+            }
+
+# Data Structures
+
+## Subscription (object)
++ message: `Dealer 5000100 has a PSI product subscription.`
++ description
+    + dealerNumber: `5000100`
+    + dealerName: `Brian OConner`
+    + contactName: `Dominic Toretto`
+    + contactEmail: `dominic@toretto`
+    + contactPhoneNumber: `123456`
+    + productName: (enum[string])
+        + Members
+            + `sevenDayVarPSI`
+            + `fourTeenDayVarPSI`
+    + cascade: true (boolean)
+    + locations: `PSM1` (array[string]) - Auction ID.
+    + startDate: `2019-01-01`
+    + PSImileage: 13000 (number)
+    + LPImileage: 126000 (number)
+    + channel: (array)
+        + (enum[string])
+            + `In-Lane`
+            + `Simulcast`
+
+
+## Subscription Create Payload (object)
++ dealerNumber: `500202` (required)
++ approverName: `Mia Toretto`
++ contactName: `Dominic Toretto` (required)
++ dealerName: `Brian OConner` (required)
++ contactEmail: `dominic@toretto` (required)
++ contactPhoneNumber: `123456` (required)
++ productName: (enum[string])
+    + Members
+        + `sevenDayVarPSI`
+        + `fourTeenDayVarPSI`
++ cascade: true (boolean, required)
++ locations: `PSM1` (array[string], required)
++ channel: (array)
+    + (enum[string])
+        + `In-Lane`
+        + `Simulcast`
++ PSIprice: 1000 (number)
++ LPIprice: 300 (number)
++ PSImileage: 13000 (number)
++ LPImileage: 126000    (number)
++ startDate: `2019-01-01`
++ endDate: `2019-01-20`
 
 
 # Bulk request for Issues Arbitration Corrected the spelling of eligibilityEligibility [/issues/arbitration/eligibility/bulk]
