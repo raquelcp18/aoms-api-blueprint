@@ -274,24 +274,31 @@ Compute arbitration eligibility
 ## Subscription (object)
 + message: `Dealer 5000100 has a PSI product subscription.`
 + description
-    + dealerNumber: `5000100`
-    + dealerName: `Brian OConner`
-    + contactName: `Dominic Toretto`
-    + contactEmail: `dominic@toretto`
-    + contactPhoneNumber: `123456`
-    + productName: (enum[string])
+    + dealerNumber: 5000100 (number, required)
+    + dealerName: `Brian OConner` (string, required)
+    + contactName: `Dominic Toretto` (string, required)   
+    + contactEmail: `dominic@toretto` (string, required)
+    + contactPhoneNumber: `123456` (string, required)
+    + cascade: true (boolean, required)
+    + excludeCloseSale: true (boolean, required)
+    + products: (object, required)
         + Members
-            + `sevenDayVarPSI`
-            + `fourTeenDayVarPSI`
-    + cascade: true (boolean)
-    + locations: `PSM1` (array[string]) - Auction ID.
-    + startDate: `2019-01-01`
-    + PSImileage: 13000 (number)
-    + LPImileage: 126000 (number)
-    + channel: (array)
-        + (enum[string])
-            + `In-Lane`
-            + `Simulcast`
+            + sevenDayVarPSI (object)   
+            + fourTeenDayVarPSI (object)
+            + sevenDayFlatPSI (object)
+            + fourteenDayFlatPSI (object)
+        + sevenDayVarPSI
+            + locations: `PSM1` (array[string])
+            + startDate: `2019-01-01` (string)
+            + endDate: `2019-01-20` (string)
+            + PSImileage: 13000 (number)
+            + LPImileage: 126000 (number)
+            + LPIprice: 300 (number)
+            + PSIprice: 1000 (number)
+            + channel: (array)
+                + (enum[string])
+                    + `In-Lane`
+                    + `Simulcast` 
 
 
 ## Subscription Create Payload (object)
