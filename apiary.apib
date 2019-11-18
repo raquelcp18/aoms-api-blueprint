@@ -131,8 +131,6 @@ Compute arbitration eligibility
 
 ### Create or Update a Customer Subscription [POST  /dealers]
 
-+ Parameters
-    + dealerNumber: `5000202` (required) - Dealer Number.
 + Request (application/json)
     + Attributes (Subscription Create Payload)
 
@@ -149,30 +147,32 @@ Compute arbitration eligibility
                 "contactName": "Dominic Toretto",
                 "contactEmail": "dominic@toretto",
                 "contactPhoneNumber": "123456",
+                "status": "active",
+                "cascade": true,
+                "excludeCloseSale": true,
                 "products": {
                     "sevenDayVarPSI": {
-                    "active": true,
-                    "cascade": true,
-                    "locations": [
-                        "PSM1"
-                    ],
-                    "startDate": "2019-01-01",
-                    "endDate": "2019-01-20",
-                    "price": 1000,
-                    "coverageConditions": {
-                        "channel": [
-                        "In-Lane"
-                        ],
-                        "mileage": 13000
-                    },
-                    "LPI": {
-                        "mileage": 126000,
-                        "price": 300
-                    }
+                        "active": true,
+                        "startDate": "2019-01-01",
+                        "endDate": "2019-01-20",
+                        "price": 1000,
+                        "coverageConditions": {
+                            "channels": {
+                                "In-Lane": {
+                                    "locations": [
+                                        "PSM1"
+                                    ]
+                                }
+                            },
+                            "mileage": 200
+                        },
+                        "LPI": {
+                            "mileage": 126000,
+                            "price": 300
+                        }
                     }
                 },
-                "status": "active",
-                "createdAt": "2019-10-08T18:43:19.647Z"
+                "createdAt": "2019-11-14T19:18:12.874Z"
             }
 
 
@@ -183,36 +183,39 @@ Compute arbitration eligibility
     + Body
 
             {
-                "dealerNumber": "500202",
+                "cascade": true,
+                "contactEmail": "dominic@toretto",
                 "approverName": "Mia Toretto",
-                "dealerName": "Brian OConner",
                 "contactName": "Dominic Toretto",
-                "contactEmail": "dominic@toretto.dev",
-                "contactPhoneNumber": "123456",
                 "products": {
                     "sevenDayVarPSI": {
-                    "active": true,
-                    "cascade": true,
-                    "locations": [
-                        "PSM1"
-                    ],
-                    "startDate": "2019-01-01",
-                    "endDate": "2019-01-20",
-                    "price": 1000,
-                    "coverageConditions": {
-                        "channel": [
-                        "In-Lane"
-                        ],
-                        "mileage": 13000
-                    },
-                    "LPI": {
-                        "mileage": 126000,
-                        "price": 300
-                    }
+                        "active": true,
+                        "coverageConditions": {
+                            "channels": {
+                                "In-Lane": {
+                                    "locations": [
+                                        "PSM1"
+                                    ]
+                                }
+                            },
+                            "mileage": 200
+                        },
+                        "LPI": {
+                            "price": 300,
+                            "mileage": 126000
+                        },
+                        "endDate": "2019-01-20",
+                        "startDate": "2019-01-01",
+                        "price": 1000
                     }
                 },
+                "updatedAt": "2019-11-14T19:19:33.862Z",
                 "status": "active",
-                "createdAt": "2019-10-08T18:43:19.647Z"
+                "createdAt": "2019-11-14T19:18:12.874Z",
+                "dealerName": "Brian OConner",
+                "dealerNumber": "500202",
+                "excludeCloseSale": false,
+                "contactPhoneNumber": "123456"
             }
 
 + Response 400 (application/json)
@@ -303,6 +306,7 @@ Compute arbitration eligibility
         + `sevenDayVarPSI`
         + `fourTeenDayVarPSI`
 + cascade: true (boolean, required)
++ excludeCloseSale: true (boolean, required)
 + locations: `PSM1` (array[string], required)
 + channel: (array)
     + (enum[string])
