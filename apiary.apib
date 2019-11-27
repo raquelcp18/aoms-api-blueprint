@@ -308,23 +308,38 @@ Compute arbitration eligibility
 + dealerName: `Brian OConner` (required)
 + contactEmail: `dominic@toretto` (required)
 + contactPhoneNumber: `123456` (required)
-+ productName: (enum[string])
-    + Members
-        + `sevenDayVarPSI`
-        + `fourTeenDayVarPSI`
 + cascade: true (boolean, required)
 + excludeCloseSale: true (boolean, required)
-+ locations: `PSM1` (array[string], required)
-+ channel: (array)
-    + (enum[string])
-        + `In-Lane`
-        + `Simulcast`
-+ PSIprice: 1000 (number)
-+ LPIprice: 300 (number)
-+ PSImileage: 13000 (number)
-+ LPImileage: 126000    (number)
-+ startDate: `2019-01-01`
-+ endDate: `2019-01-20`
++ products: (object, required)
+    + Members
+        + sevenDayVarPSI (object)   
+        + fourTeenDayVarPSI (object)
+        + sevenDayFlatPSI (object)
+        + fourteenDayFlatPSI (object)
+    + sevenDayVarPSI
+        + locations: `PSM1` (array[string])
+        + startDate: `2019-01-01` (string)
+        + endDate: `2019-01-20` (string)
+        + PSImileage: 13000 (number)
+        + LPImileage: 126000 (number)
+        + LPIprice: 300 (number)
+        + PSIprice: 1000 (number)
+        + channel: (array)
+            + (enum[string])
+                + `In-Lane`
+                + `Simulcast`
+    + fourteenVarPSI
+        + locations: `PSM1` (array[string])
+        + startDate: `2019-01-01` (string)
+        + endDate: `2019-01-30` (string)
+        + PSImileage: 1300 (number)
+        + LPImileage: 127000 (number)
+        + LPIprice: 300 (number)
+        + PSIprice: 1000 (number)
+        + channel: (array)
+            + (enum[string])
+                + `In-Lane`
+                + `Simulcast` 
 
 
 # Bulk request for Issues Arbitration Corrected the spelling of eligibilityEligibility [/issues/arbitration/eligibility/bulk]
