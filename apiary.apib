@@ -159,7 +159,7 @@ Compute arbitration eligibility
                         "coverageConditions": {
                             "channels": {
                                 "In-Lane": {
-                                    "locations": [
+                                    "auctionIds": [
                                         "PSM1"
                                     ]
                                 }
@@ -276,14 +276,14 @@ Compute arbitration eligibility
 + description
     + dealerNumber: 5000100 (number, required)
     + dealerName: `Brian OConner` (string, required)
-    + contactName: `Dominic Toretto` (string, required)   
+    + contactName: `Dominic Toretto` (string, required)
     + contactEmail: `dominic@toretto` (string, required)
     + contactPhoneNumber: `123456` (string, required)
     + cascade: true (boolean, required)
     + excludeCloseSale: true (boolean, required)
     + products: (object, required)
         + Members
-            + sevenDayVarPSI (object)   
+            + sevenDayVarPSI (object)
             + fourTeenDayVarPSI (object)
             + sevenDayFlatPSI (object)
             + fourteenDayFlatPSI (object)
@@ -298,7 +298,7 @@ Compute arbitration eligibility
             + channel: (array)
                 + (enum[string])
                     + `In-Lane`
-                    + `Simulcast` 
+                    + `Simulcast`
 
 
 ## Subscription Create Payload (object)
@@ -312,7 +312,7 @@ Compute arbitration eligibility
 + excludeCloseSale: true (boolean, required)
 + products: (object, required)
     + Members
-        + sevenDayVarPSI (object)   
+        + sevenDayVarPSI (object)
         + fourTeenDayVarPSI (object)
         + sevenDayFlatPSI (object)
         + fourteenDayFlatPSI (object)
@@ -339,7 +339,7 @@ Compute arbitration eligibility
         + channel: (array)
             + (enum[string])
                 + `In-Lane`
-                + `Simulcast` 
+                + `Simulcast`
 
 
 # Bulk request for Issues Arbitration Corrected the spelling of eligibilityEligibility [/issues/arbitration/eligibility/bulk]
