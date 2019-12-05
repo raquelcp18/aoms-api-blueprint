@@ -145,7 +145,7 @@ Compute arbitration eligibility
                 "approverName": "Mia Toretto",
                 "dealerName": "Brian OConner",
                 "contactName": "Dominic Toretto",
-                "contactEmail": "dominic@toretto",
+                "contactEmail": "dominic@toretto.com",
                 "contactPhoneNumber": "123456",
                 "status": "active",
                 "cascade": true,
@@ -184,7 +184,7 @@ Compute arbitration eligibility
 
             {
                 "cascade": true,
-                "contactEmail": "dominic@toretto",
+                "contactEmail": "dominic@toretto.com",
                 "approverName": "Mia Toretto",
                 "contactName": "Dominic Toretto",
                 "products": {
@@ -193,7 +193,7 @@ Compute arbitration eligibility
                         "coverageConditions": {
                             "channels": {
                                 "In-Lane": {
-                                    "locations": [
+                                    "auctionIds": [
                                         "PSM1"
                                     ]
                                 }
@@ -277,7 +277,7 @@ Compute arbitration eligibility
     + dealerNumber: 5000100 (number, required)
     + dealerName: `Brian OConner` (string, required)
     + contactName: `Dominic Toretto` (string, required)
-    + contactEmail: `dominic@toretto` (string, required)
+    + contactEmail: `dominic@toretto.com` (string, required)
     + contactPhoneNumber: `123456` (string, required)
     + cascade: true (boolean, required)
     + excludeCloseSale: true (boolean, required)
@@ -288,7 +288,7 @@ Compute arbitration eligibility
             + sevenDayFlatPSI (object)
             + fourteenDayFlatPSI (object)
         + sevenDayVarPSI
-            + locations: `PSM1` (array[string])
+            + auctionIds: `PSM1` (array[string])
             + startDate: `2019-01-01` (string)
             + endDate: `2019-01-20` (string)
             + PSImileage: 13000 (number)
@@ -306,7 +306,7 @@ Compute arbitration eligibility
 + approverName: `Mia Toretto`
 + contactName: `Dominic Toretto` (required)
 + dealerName: `Brian OConner` (required)
-+ contactEmail: `dominic@toretto` (required)
++ contactEmail: `dominic@toretto.com` (required)
 + contactPhoneNumber: `123456` (required)
 + cascade: true (boolean, required)
 + excludeCloseSale: true (boolean, required)
@@ -317,7 +317,7 @@ Compute arbitration eligibility
         + sevenDayFlatPSI (object)
         + fourteenDayFlatPSI (object)
     + sevenDayVarPSI
-        + locations: `PSM1` (array[string])
+        + auctionIds: `PSM1` (array[string])
         + startDate: `2019-01-01` (string)
         + endDate: `2019-01-20` (string)
         + PSImileage: 13000 (number)
@@ -329,7 +329,7 @@ Compute arbitration eligibility
                 + `In-Lane`
                 + `Simulcast`
     + fourteenVarPSI
-        + locations: `PSM1` (array[string])
+        + auctionIds: `PSM1` (array[string])
         + startDate: `2019-01-01` (string)
         + endDate: `2019-01-30` (string)
         + PSImileage: 1300 (number)
